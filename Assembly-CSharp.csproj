@@ -6,7 +6,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{AB3CC1CD-2629-44EA-11E2-DC14D9B486E0}</ProjectGuid>
+    <ProjectGuid>{7750388D-EC46-BAB2-4B90-257F32559EEE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -49,14 +49,12 @@
      <Compile Include="Assets\Scripts\sc_Sequencer.cs" />
      <Compile Include="Assets\Scripts\sc_bat_collisions.cs" />
      <Compile Include="Assets\Scripts\sc_bat_move_controll.cs" />
-     <Compile Include="Assets\Scripts\sc_boundary_manager.cs" />
      <Compile Include="Assets\Scripts\sc_building_seed.cs" />
      <Compile Include="Assets\Scripts\sc_death_by_time.cs" />
      <Compile Include="Assets\Scripts\sc_enemies_manager.cs" />
      <Compile Include="Assets\Scripts\sc_enemy_collisions.cs" />
      <Compile Include="Assets\Scripts\sc_hawk_move.cs" />
      <Compile Include="Assets\Scripts\sc_mouse_tracker.cs" />
-     <Compile Include="Assets\Scripts\sc_north_halo.cs" />
      <Compile Include="Assets\Scripts\sc_s1.cs" />
      <Compile Include="Assets\Scripts\sc_sonar.cs" />
      <Compile Include="Assets\Scripts\sc_time_slower.cs" />

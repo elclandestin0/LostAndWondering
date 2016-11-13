@@ -4,7 +4,7 @@ using System.Collections;
 public class sc_sonar : MonoBehaviour {
 
 	bool going = false;
-	float sonarPingingInterval = 0.5f;
+	float sonarPingingInterval = 2f;
 	int PingsPerPinging = 1000;
 	float lastPinged = 0f;
 
@@ -29,7 +29,7 @@ public class sc_sonar : MonoBehaviour {
 				sonarChirp.Play();
 				lastPinged = now;
 				for (int i = 0; i < PingsPerPinging; i++) {
-					sonarPing (Random.Range (0f, 360f), Random.Range (0f, 90f), 3000f);
+					sonarPing (Random.Range (0f, 360f), Random.Range (0f, 90f), 1000f);
 				}
 			}
 		}
@@ -49,32 +49,22 @@ public class sc_sonar : MonoBehaviour {
 					                  hitInfo.point + (hitInfo.normal.normalized * 0.1f),
 					                  Quaternion.LookRotation (hitInfo.normal * -1f),
 					                  r._Dynamic.transform);
-				paintChildren (mark, r.markMat.world);
-				//mark.GetComponent<Renderer> ().material = r.markMat.world;
+				mark.GetComponent<Renderer> ().material = r.markMat.world;
 			} else if (hitInfo.collider.tag == "worldConcrete") {
 				//create mark
 				GameObject mark = (GameObject)Instantiate (r.p.mark,
 					                  hitInfo.point + (hitInfo.normal.normalized * 0.1f),
 					                  Quaternion.LookRotation (hitInfo.normal * -1f),
 					                  r._Dynamic.transform);
-				paintChildren (mark, r.markMat.concrete);
-				//mark.GetComponent<Renderer> ().material = r.markMat.concrete;
+				mark.GetComponent<Renderer> ().material = r.markMat.concrete;
 			}else if (hitInfo.collider.tag == "worldGlass") {
 				//create mark
 				GameObject mark = (GameObject)Instantiate (r.p.mark,
 					hitInfo.point + (hitInfo.normal.normalized * 0.1f),
 					Quaternion.LookRotation (hitInfo.normal * -1f),
 					r._Dynamic.transform);
-				paintChildren (mark, r.markMat.glass);
-				//mark.GetComponent<Renderer> ().material = r.markMat.glass;
+				mark.GetComponent<Renderer> ().material = r.markMat.glass;
 			}
-		}
-	}
-
-	void paintChildren(GameObject target, Material mat){
-		Transform[] children = target.GetComponentsInChildren<Transform> ();
-		foreach(Transform tr in children){
-			tr.gameObject.GetComponent<Renderer> ().material = mat;
 		}
 	}
 }

@@ -42,9 +42,9 @@ public class sc_enemies_manager : MonoBehaviour {
 
 				for (int i = 0; i < level; i++) {
 					Instantiate (r.p.hawk,
-						r.a.enemies.transform.position,
+						r.a.hawkGroup.transform.position,
 						Quaternion.identity,
-						r.a.enemies.transform);
+						r.a.hawkGroup.transform);
 				}
 			}
 		}

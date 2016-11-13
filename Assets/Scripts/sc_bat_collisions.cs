@@ -21,7 +21,7 @@ public class sc_bat_collisions : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other) {
 		if(going){
-			//Debug.Log ("Collision with: " + other.tag);
+			Debug.Log ("Collision with: " + other.tag);
 			if (other.tag == "enemy" || other.tag == "world" || other.tag == "worldConcrete" || other.tag == "worldGlass") {
 				Instantiate (r.p.splat,
 					transform.position,

@@ -58,13 +58,11 @@ public class sc_Registrar : MonoBehaviour {
 	[System.Serializable]
 	public class Actors{
 		//public Gameobject name;
-		public GameObject all;
 		public GameObject bat;
 		public GameObject mouseTracker;
 		public GameObject farCamera;
 		public GameObject closeCamera;
-		public GameObject enemies;
-		public GameObject boundaryBox;
+		public GameObject hawkGroup;
 	}
 	public Actors a = new Actors();
 

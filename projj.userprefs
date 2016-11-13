@@ -1,0 +1,18 @@
+﻿<Properties StartupItem="Assembly-CSharp.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\sc_sonar.cs">
+    <Files>
+      <File FileName="Assets\Scripts\sc_Registrar.cs" Line="10" Column="1" />
+      <File FileName="Assets\Scripts\sc_bat_move_controll.cs" Line="28" Column="25" />
+      <File FileName="Assets\Scripts\sc_boundary_manager.cs" Line="36" Column="13" />
+      <File FileName="Assets\Scripts\sc_bat_collisions.cs" Line="24" Column="6" />
+      <File FileName="Assets\Scripts\sc_building_seed.cs" Line="22" Column="4" />
+      <File FileName="Assets\Scripts\sc_sonar.cs" Line="68" Column="41" />
+      <File FileName="Assets\Scripts\sc_north_halo.cs" Line="24" Column="44" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

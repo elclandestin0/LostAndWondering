@@ -1,0 +1,42 @@
+C:\Users\Pete\Desktop\Concordia\Comp 376\Proj\projG\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
+C:\Users\Pete\Desktop\Concordia\Comp 376\Proj\projG\Temp\bin\Debug\Assembly-CSharp.dll
+C:\Users\Pete\Desktop\Concordia\Comp 376\Proj\projG\Temp\bin\Debug\Assembly-CSharp.pdb
+C:\Users\Pete\Desktop\Concordia\Comp 376\Proj\projG\Temp\bin\Debug\UnityEditor.dll
+C:\Users\Pete\Desktop\Concordia\Comp 376\Proj\projG\Temp\bin\Debug\UnityEngine.dll
+C:\Users\Pete\Desktop\Concordia\Comp 376\Proj\projG\Temp\bin\Debug\UnityEngine.Networking.dll
+C:\Users\Pete\Desktop\Concordia\Comp 376\Proj\projG\Temp\bin\Debug\UnityEngine.UI.dll
+C:\Users\Pete\Desktop\Concordia\Comp 376\Proj\projG\Temp\bin\Debug\Mono.Cecil.dll
+C:\Users\Pete\Desktop\Concordia\Comp 376\Proj\projG\Temp\bin\Debug\Unity.SerializationLogic.dll
+C:\Users\Pete\Desktop\Concordia\Comp 376\Proj\projG\Temp\bin\Debug\Unity.DataContract.dll
+C:\Users\Pete\Desktop\Concordia\Comp 376\Proj\projG\Temp\bin\Debug\ICSharpCode.NRefactory.dll
+C:\Users\Pete\Desktop\Concordia\Comp 376\Proj\projG\Temp\bin\Debug\Unity.UNetWeaver.dll
+C:\Users\Pete\Desktop\Concordia\Comp 376\Proj\projG\Temp\bin\Debug\Unity.CecilTools.dll
+C:\Users\Pete\Desktop\Concordia\Comp 376\Proj\projG\Temp\bin\Debug\Mono.Cecil.Pdb.dll
+C:\Users\Pete\Desktop\Concordia\Comp 376\Proj\projG\Temp\bin\Debug\Mono.Cecil.Mdb.dll
+C:\Users\Pete\Desktop\Concordia\Comp 376\Proj\projG\Temp\bin\Debug\UnityEngine.xml
+C:\Users\Pete\Desktop\Concordia\Comp 376\Proj\projG\Temp\bin\Debug\UnityEditor.xml
+C:\Users\Pete\Desktop\Concordia\Comp 376\Proj\projG\Temp\bin\Debug\UnityEngine.UI.xml
+C:\Users\Pete\Desktop\Concordia\Comp 376\Proj\projG\Temp\bin\Debug\UnityEngine.Networking.xml
+C:\Users\Pete\Desktop\Concordia\Comp 376\Proj\projG\obj\Debug\Assembly-CSharp.dll
+C:\Users\Pete\Desktop\Concordia\Comp 376\Proj\projG\obj\Debug\Assembly-CSharp.pdb
+C:\Users\pete\Desktop\Concordia\Comp 376\Unity Projects\Proj\projj\Temp\bin\Debug\Assembly-CSharp.dll
+C:\Users\pete\Desktop\Concordia\Comp 376\Unity Projects\Proj\projj\Temp\bin\Debug\Assembly-CSharp.pdb
+C:\Users\pete\Desktop\Concordia\Comp 376\Unity Projects\Proj\projj\Temp\bin\Debug\UnityEditor.dll
+C:\Users\pete\Desktop\Concordia\Comp 376\Unity Projects\Proj\projj\Temp\bin\Debug\UnityEngine.dll
+C:\Users\pete\Desktop\Concordia\Comp 376\Unity Projects\Proj\projj\Temp\bin\Debug\UnityEngine.Networking.dll
+C:\Users\pete\Desktop\Concordia\Comp 376\Unity Projects\Proj\projj\Temp\bin\Debug\UnityEngine.UI.dll
+C:\Users\pete\Desktop\Concordia\Comp 376\Unity Projects\Proj\projj\Temp\bin\Debug\Mono.Cecil.dll
+C:\Users\pete\Desktop\Concordia\Comp 376\Unity Projects\Proj\projj\Temp\bin\Debug\Unity.SerializationLogic.dll
+C:\Users\pete\Desktop\Concordia\Comp 376\Unity Projects\Proj\projj\Temp\bin\Debug\Unity.DataContract.dll
+C:\Users\pete\Desktop\Concordia\Comp 376\Unity Projects\Proj\projj\Temp\bin\Debug\ICSharpCode.NRefactory.dll
+C:\Users\pete\Desktop\Concordia\Comp 376\Unity Projects\Proj\projj\Temp\bin\Debug\Unity.UNetWeaver.dll
+C:\Users\pete\Desktop\Concordia\Comp 376\Unity Projects\Proj\projj\Temp\bin\Debug\Unity.CecilTools.dll
+C:\Users\pete\Desktop\Concordia\Comp 376\Unity Projects\Proj\projj\Temp\bin\Debug\Mono.Cecil.Pdb.dll
+C:\Users\pete\Desktop\Concordia\Comp 376\Unity Projects\Proj\projj\Temp\bin\Debug\Mono.Cecil.Mdb.dll
+C:\Users\pete\Desktop\Concordia\Comp 376\Unity Projects\Proj\projj\Temp\bin\Debug\UnityEngine.xml
+C:\Users\pete\Desktop\Concordia\Comp 376\Unity Projects\Proj\projj\Temp\bin\Debug\UnityEditor.xml
+C:\Users\pete\Desktop\Concordia\Comp 376\Unity Projects\Proj\projj\Temp\bin\Debug\UnityEngine.UI.xml
+C:\Users\pete\Desktop\Concordia\Comp 376\Unity Projects\Proj\projj\Temp\bin\Debug\UnityEngine.Networking.xml
+C:\Users\pete\Desktop\Concordia\Comp 376\Unity Projects\Proj\projj\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
+C:\Users\pete\Desktop\Concordia\Comp 376\Unity Projects\Proj\projj\obj\Debug\Assembly-CSharp.dll
+C:\Users\pete\Desktop\Concordia\Comp 376\Unity Projects\Proj\projj\obj\Debug\Assembly-CSharp.pdb

@@ -1,0 +1,18 @@
+﻿<Properties StartupItem="Assembly-CSharp.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\sc_s1.cs">
+    <Files>
+      <File FileName="Assets\Scripts\sc_Registrar.cs" Line="1" Column="1" />
+      <File FileName="Assets\sc_building_seed.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\sc_s1.cs" Line="14" Column="29" />
+      <File FileName="Assets\Scripts\sc_Sequencer.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\sc_sonar.cs" Line="1" Column="1" />
+      <File FileName="Assets\sc_enemies_manager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\sc_bat_move_controll.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

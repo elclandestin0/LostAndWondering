@@ -1,77 +1,80 @@
 ﻿using UnityEngine;
-using System.Collections;
+
 
 public class BatController : MonoBehaviour {
-
-    public float _batSpeed;
-    private float _batFlapTimer;
-    private const float FLAPTIMER = 0.1f;
-    private int _flapAnimation;
+    private const float Y_Angle_MIN = -50.0f;
+    private const float Y_Angle_MAX = 50.0f;
+    
+    private float sensitivity = 2.0f;
+    private float smoothing = 1.0f;
+    private float currentX = 0.0f;
+    private float currentY = 0.0f;
+    private Vector2 _mouseLook;
+    private Vector2 _smoothV;
+    public float batSpeed;
+    public GameObject Bat;
+    private BatFlapController batFlapController;
     private Quaternion _batRotation;
 
 	// Use this for initialization
 	void Start () {
-        _batFlapTimer = 0.4f;
-        _flapAnimation = 1;
-        _batRotation = transform.rotation;
+        
+
+        batFlapController = Bat.GetComponent<BatFlapController>();
+        Cursor.lockState = CursorLockMode.Locked;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        FlapWings();
-	}
+        /*var right = transform.right;
+        var up = transform.up;
+        currentX = Input.GetAxis("Mouse X") * sensitivity;
+        currentY = Input.GetAxis("Mouse Y") * sensitivity;
+        
+        var md = new Vector2(currentX, currentY);
+        md = Vector2.Scale(md, new Vector2(smoothing, smoothing));
+        _smoothV.x = Mathf.Lerp(_smoothV.x, md.x, 1f / smoothing);
+        _smoothV.y = Mathf.Lerp(_smoothV.y, md.y, 1f / smoothing);
+        _mouseLook += _smoothV;
+
+        _mouseLook.y = Mathf.Clamp(_mouseLook.y, Y_Angle_MIN, Y_Angle_MAX);
+        //_mouseLook.x = Mathf.Clamp(_mouseLook.x, -25, 25);
+
+        Debug.Log(_mouseLook);
+        transform.localRotation = Quaternion.AngleAxis(-_mouseLook.y, right);
+        transform.localRotation *= Quaternion.AngleAxis(_mouseLook.x, up);
+
+        */
+        //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(_batRotation.eulerAngles), Time.deltaTime * 10f);
+
+
+        batFlapController.FlapWings();
+
+    }
 
     void FixedUpdate()
     {
+
         Move();
     }   
 
-    void FlapWings()
-    {
-        if(_batFlapTimer >= FLAPTIMER)
-        {
-            _batFlapTimer = 0.0f;
-            transform.Find("Bat_Anim" + _flapAnimation).gameObject.SetActive(false);
-            _flapAnimation = (_flapAnimation + 1) % 7;
-            transform.Find("Bat_Anim" + _flapAnimation).gameObject.SetActive(true);
-            //if(_flapAnimation == 1 && ((int)(_flapAnimation/7)) % 2 == 0)
-            //{
-            //    GetComponent<Rigidbody>().AddForce(0f, _flapStrength, 0f);
-            //}
-        }
-        else
-        {
-            _batFlapTimer += Time.deltaTime;
-        }
-    }
 
     void Move()
     {
-        Vector3 moveHorizontal = transform.right * Input.GetAxis("Horizontal");
-        Vector3 moveVertical = transform.forward * Input.GetAxis("Vertical");
+        float translation = Input.GetAxis("Vertical") * batSpeed * Time.deltaTime;
+        float straffe = Input.GetAxis("Horizontal") * batSpeed * Time.deltaTime;
+        //transform.Translate(straffe, 0, translation);
+        GetComponent<Rigidbody>().AddRelativeForce(new Vector3(straffe, 0, translation));
 
-        Vector3 v3Rot = new Vector3(0.0f, 0.0f, 1.0f);
-        Vector3 v3Pos = Input.mousePosition;
-        v3Pos.z = 0f;
-        v3Pos = Camera.main.ScreenToViewportPoint(v3Pos);
-
-        if (v3Pos.x < 0.4)
-            transform.Rotate(-v3Rot);
-        else if (v3Pos.x > 0.6)
-            transform.Rotate(v3Rot);
-        
-        GetComponent<Rigidbody>().AddForce((moveHorizontal + moveVertical - (transform.up * 10f)) * Time.deltaTime * _batSpeed);
-        if (GetComponent<Rigidbody>().velocity.x > _batSpeed/10)
+        if (Input.GetKeyDown("escape"))
         {
-            GetComponent<Rigidbody>().velocity = new Vector3(_batSpeed / 10, GetComponent<Rigidbody>().velocity.y, GetComponent<Rigidbody>().velocity.z);
-        }
-        if (GetComponent<Rigidbody>().velocity.y > _batSpeed / 10)
-        {
-            GetComponent<Rigidbody>().velocity = new Vector3(GetComponent<Rigidbody>().velocity.x, _batSpeed / 10, GetComponent<Rigidbody>().velocity.z);
-        }
-        if (GetComponent<Rigidbody>().velocity.z > _batSpeed / 10)
-        {
-            GetComponent<Rigidbody>().velocity = new Vector3(GetComponent<Rigidbody>().velocity.x, GetComponent<Rigidbody>().velocity.y, _batSpeed / 10);
+            Cursor.lockState = CursorLockMode.None;
         }
     }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        ;
+    }
+
 }

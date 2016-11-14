@@ -4,7 +4,7 @@ using System.Collections;
 public class sc_sonar : MonoBehaviour {
 
 	bool going = false;
-	float sonarPingingInterval = 2f;
+	float sonarPingingInterval = .5f;
 	int PingsPerPinging = 1000;
 	float lastPinged = 0f;
 

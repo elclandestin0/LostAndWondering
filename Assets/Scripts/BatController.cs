@@ -15,11 +15,14 @@ public class BatController : MonoBehaviour {
     public GameObject Bat;
     private BatFlapController batFlapController;
     private Quaternion _batRotation;
+    private Vector3 _spawnPosition;
+    private Quaternion _spawnRotation;
 
 	// Use this for initialization
 	void Start () {
-        
 
+        _spawnPosition = transform.position;
+        _spawnRotation = transform.rotation;
         batFlapController = Bat.GetComponent<BatFlapController>();
         Cursor.lockState = CursorLockMode.Locked;
 	}
@@ -75,6 +78,12 @@ public class BatController : MonoBehaviour {
     void OnCollisionEnter(Collision collision)
     {
         ;
+    }
+
+    public void Respawn()
+    {
+        transform.position = _spawnPosition;
+        transform.rotation = _spawnRotation;
     }
 
 }

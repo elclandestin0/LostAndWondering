@@ -17,10 +17,14 @@ public class BatController : MonoBehaviour {
     private Quaternion _batRotation;
     private Vector3 _spawnPosition;
     private Quaternion _spawnRotation;
+    private float boostCD = 5;
+    public float boostCoolDown = 5;
+    private AudioSource audioSource;
+    public AudioClip boostSound;
 
 	// Use this for initialization
 	void Start () {
-
+        audioSource = GetComponent<AudioSource>();
         _spawnPosition = transform.position;
         _spawnRotation = transform.rotation;
         batFlapController = Bat.GetComponent<BatFlapController>();
@@ -29,30 +33,9 @@ public class BatController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        /*var right = transform.right;
-        var up = transform.up;
-        currentX = Input.GetAxis("Mouse X") * sensitivity;
-        currentY = Input.GetAxis("Mouse Y") * sensitivity;
-        
-        var md = new Vector2(currentX, currentY);
-        md = Vector2.Scale(md, new Vector2(smoothing, smoothing));
-        _smoothV.x = Mathf.Lerp(_smoothV.x, md.x, 1f / smoothing);
-        _smoothV.y = Mathf.Lerp(_smoothV.y, md.y, 1f / smoothing);
-        _mouseLook += _smoothV;
-
-        _mouseLook.y = Mathf.Clamp(_mouseLook.y, Y_Angle_MIN, Y_Angle_MAX);
-        //_mouseLook.x = Mathf.Clamp(_mouseLook.x, -25, 25);
-
-        Debug.Log(_mouseLook);
-        transform.localRotation = Quaternion.AngleAxis(-_mouseLook.y, right);
-        transform.localRotation *= Quaternion.AngleAxis(_mouseLook.x, up);
-
-        */
-        //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(_batRotation.eulerAngles), Time.deltaTime * 10f);
-
 
         batFlapController.FlapWings();
-
+        boostCD += Time.deltaTime;
     }
 
     void FixedUpdate()
@@ -72,6 +55,16 @@ public class BatController : MonoBehaviour {
         if (Input.GetKeyDown("escape"))
         {
             Cursor.lockState = CursorLockMode.None;
+        }
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {   
+            if (boostCD >= boostCoolDown)
+            {
+                GetComponent<Rigidbody>().AddRelativeForce(new Vector3(straffe * 200, 0, translation * 200));
+                audioSource.PlayOneShot(boostSound, 1);
+                boostCD = 0;
+            }
+            
         }
     }
 

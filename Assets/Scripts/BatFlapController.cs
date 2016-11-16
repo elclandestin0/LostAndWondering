@@ -23,10 +23,7 @@ public class BatFlapController : MonoBehaviour {
             transform.Find("Bat_Anim" + _flapAnimation).gameObject.SetActive(false);
             _flapAnimation = (_flapAnimation + 1) % 7;
             transform.Find("Bat_Anim" + _flapAnimation).gameObject.SetActive(true);
-            //if(_flapAnimation == 1 && ((int)(_flapAnimation/7)) % 2 == 0)
-            //{
-            //    GetComponent<Rigidbody>().AddForce(0f, _flapStrength, 0f);
-            //}
+
         }
         else
         {

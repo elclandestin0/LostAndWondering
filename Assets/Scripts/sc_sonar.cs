@@ -7,7 +7,7 @@ public class sc_sonar : MonoBehaviour {
 	float sonarPingingInterval = .5f;
 	int PingsPerPinging = 1000;
 	float lastPinged = 0f;
-
+    // lol
 	AudioSource sonarChirp;
 
 	sc_Registrar r;

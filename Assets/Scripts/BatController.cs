@@ -22,7 +22,6 @@ public class BatController : MonoBehaviour {
     private float boostCD = 5;
     public float boostCoolDown = 5;
     private AudioSource audioSource;
-    public AudioClip boostSound;
     public Slider speedBoost;
 
 	// Use this for initialization
@@ -65,7 +64,6 @@ public class BatController : MonoBehaviour {
             if (boostCD >= boostCoolDown)
             {
                 GetComponent<Rigidbody>().AddRelativeForce(new Vector3(straffe * 200, 0, translation * 200));
-                audioSource.PlayOneShot(boostSound, 1);
                 speedBoost.value = 0;
                 boostCD = 0;
                 StartCoroutine("_wait"); // go down to change the wait time for new speed boost

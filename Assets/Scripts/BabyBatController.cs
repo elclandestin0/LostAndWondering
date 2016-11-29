@@ -9,13 +9,17 @@ public class BabyBatController : MonoBehaviour {
     private int rotationSpeed = 50;
     private BatFlapController batFlapController;
     public GameObject BabyBat;
-    private string _follow;
+    public static string _follow;
     public float followParentDistance;
+    private Vector3 _spawnPosition;
+    private Quaternion _spawnRotation;
 
     void Start()
     {
         _target = GameObject.FindWithTag("player").transform;
         _cave = GameObject.FindWithTag("cave").transform;
+        _spawnPosition = transform.position;
+        _spawnRotation = transform.rotation;
         batFlapController = BabyBat.GetComponent<BatFlapController>();
         _follow = "";
     }
@@ -75,5 +79,11 @@ public class BabyBatController : MonoBehaviour {
         {
             FollowParent();
         }
+    }
+
+    public void Respawn()
+    {
+        transform.position = _spawnPosition;
+        transform.rotation = _spawnRotation;
     }
 }

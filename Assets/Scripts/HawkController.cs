@@ -4,6 +4,7 @@ using System.Collections;
 public class HawkController : MonoBehaviour {
 
     private GameObject _target;
+    private GameObject _babyBat;
     public float moveSpeed; 
     private int rotationSpeed = 3;
     public float degreesPerSecond = -65.0f;
@@ -14,6 +15,7 @@ public class HawkController : MonoBehaviour {
     void Start()
     {
         _target = GameObject.FindWithTag("player");
+        _babyBat = GameObject.FindWithTag("babyBat").transform.parent.gameObject;
         _pathToFollow = PathToFollow();
         _indexToFollow = Random.Range(1, _pathToFollow.Count);
         attackingBat = false;
@@ -49,6 +51,11 @@ public class HawkController : MonoBehaviour {
         if(Vector3.Distance(transform.position, _target.transform.position) <= 4f)
         {
             _target.transform.parent.GetComponent<BatController>().Respawn();
+            if (BabyBatController._follow == "bat")
+            {
+                BabyBatController._follow = "";
+                _babyBat.GetComponent<BabyBatController>().Respawn();
+            }
         }
     }
 

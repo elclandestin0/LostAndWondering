@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class BabyBatController : MonoBehaviour {
@@ -11,13 +12,14 @@ public class BabyBatController : MonoBehaviour {
     public GameObject BabyBat;
     private string _follow;
     public float followParentDistance;
-
+    public Text babystatusHUD;
     void Start()
     {
         _target = GameObject.FindWithTag("player").transform;
         _cave = GameObject.FindWithTag("cave").transform;
         batFlapController = BabyBat.GetComponent<BatFlapController>();
         _follow = "";
+        babystatusHUD.text = "Baby Status : Not Found";
     }
 
 
@@ -37,12 +39,14 @@ public class BabyBatController : MonoBehaviour {
             //move towards the player
             GetComponent<Rigidbody>().AddForce(transform.forward * moveSpeed * Time.deltaTime);
             batFlapController.FlapWings();
+            babystatusHUD.text = "Baby Status : Found";
         }
         //Only set it the first time
         else if (Vector3.Distance(transform.position, _target.position) <= followParentDistance)
         {
             transform.Find("Bat_morph/Bat_Anim0").gameObject.SetActive(false);
             _follow = "bat";
+            babystatusHUD.text = "Baby Status : Not Found";
         }
     }
 

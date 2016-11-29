@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class HawkController : MonoBehaviour {
@@ -10,7 +11,6 @@ public class HawkController : MonoBehaviour {
     private int _indexToFollow;
     private ArrayList _pathToFollow;
     public bool attackingBat;
-
     void Start()
     {
         _target = GameObject.FindWithTag("player");
@@ -22,6 +22,7 @@ public class HawkController : MonoBehaviour {
     void Update()
     {
         AttackBat();
+
     }
 
 

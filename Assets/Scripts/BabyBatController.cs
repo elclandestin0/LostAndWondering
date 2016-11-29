@@ -30,12 +30,15 @@ public class BabyBatController : MonoBehaviour {
     {
         if (_follow.Equals("bat"))
         {
-            //rotate to look at the player
-            transform.rotation = Quaternion.Slerp(transform.rotation,
-            Quaternion.LookRotation(_target.position - transform.position), rotationSpeed * Time.deltaTime);
+            if(Vector3.Distance(transform.position, _target.transform.position) > 4f)
+            {
+                //rotate to look at the player
+                transform.rotation = Quaternion.Slerp(transform.rotation,
+                Quaternion.LookRotation(_target.position - transform.position), rotationSpeed * Time.deltaTime);
 
-            //move towards the player
-            GetComponent<Rigidbody>().AddForce(transform.forward * moveSpeed * Time.deltaTime);
+                //move towards the player
+                GetComponent<Rigidbody>().AddForce(transform.forward * moveSpeed * Time.deltaTime);
+            }
             batFlapController.FlapWings();
         }
         //Only set it the first time

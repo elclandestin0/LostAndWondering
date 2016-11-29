@@ -15,7 +15,7 @@ public class HawkController : MonoBehaviour {
     {
         _target = GameObject.FindWithTag("player");
         _pathToFollow = PathToFollow();
-        _indexToFollow = 1;
+        _indexToFollow = Random.Range(1, _pathToFollow.Count);
         attackingBat = false;
     }
 

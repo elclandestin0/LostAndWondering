@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
+using System.Collections;
 
 
 public class BatController : MonoBehaviour {
@@ -21,9 +23,9 @@ public class BatController : MonoBehaviour {
     public float boostCoolDown = 5;
     private AudioSource audioSource;
     public AudioClip boostSound;
-
-	// Use this for initialization
-	void Start () {
+    public Slider speedBoost;
+    // Use this for initialization
+    void Start () {
         audioSource = GetComponent<AudioSource>();
         _spawnPosition = transform.position;
         _spawnRotation = transform.rotation;
@@ -62,9 +64,11 @@ public class BatController : MonoBehaviour {
             {
                 GetComponent<Rigidbody>().AddRelativeForce(new Vector3(straffe * 200, 0, translation * 200));
                 audioSource.PlayOneShot(boostSound, 1);
+                speedBoost.value = 0;
                 boostCD = 0;
+                StartCoroutine("_wait"); // go down to change the wait time for new speed boost
             }
-            
+
         }
     }
 
@@ -77,6 +81,19 @@ public class BatController : MonoBehaviour {
     {
         transform.position = _spawnPosition;
         transform.rotation = _spawnRotation;
+    }
+    public IEnumerator _wait()
+    {
+        yield return new WaitForSeconds(1f); // waiting 1sec
+        speedBoost.value = 1;
+        yield return new WaitForSeconds(1f);
+        speedBoost.value = 2;
+        yield return new WaitForSeconds(1f);
+        speedBoost.value = 3;
+        yield return new WaitForSeconds(1f);
+        speedBoost.value = 4;
+        yield return new WaitForSeconds(1f);
+        speedBoost.value = 5;
     }
 
 }

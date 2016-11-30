@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class BabyBatController : MonoBehaviour {
@@ -13,6 +14,7 @@ public class BabyBatController : MonoBehaviour {
     public float followParentDistance;
     private Vector3 _spawnPosition;
     private Quaternion _spawnRotation;
+    public Text babystatusHUD;
 
     void Start()
     {
@@ -22,6 +24,8 @@ public class BabyBatController : MonoBehaviour {
         _spawnRotation = transform.rotation;
         batFlapController = BabyBat.GetComponent<BatFlapController>();
         _follow = "";
+        babystatusHUD.text = "Baby Status : Not Found";
+
     }
 
 
@@ -42,6 +46,7 @@ public class BabyBatController : MonoBehaviour {
 
                 //move towards the player
                 GetComponent<Rigidbody>().AddForce(transform.forward * moveSpeed * Time.deltaTime);
+                babystatusHUD.text = "Baby Status : Found";
             }
             batFlapController.FlapWings();
         }
@@ -50,6 +55,7 @@ public class BabyBatController : MonoBehaviour {
         {
             transform.Find("Bat_morph/Bat_Anim0").gameObject.SetActive(false);
             _follow = "bat";
+            babystatusHUD.text = "Baby Status : Not Found";
         }
     }
 

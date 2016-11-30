@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class BabyBatController : MonoBehaviour {
@@ -9,15 +10,22 @@ public class BabyBatController : MonoBehaviour {
     private int rotationSpeed = 50;
     private BatFlapController batFlapController;
     public GameObject BabyBat;
-    private string _follow;
+    public static string _follow;
     public float followParentDistance;
+    private Vector3 _spawnPosition;
+    private Quaternion _spawnRotation;
+    public Text babystatusHUD;
 
     void Start()
     {
         _target = GameObject.FindWithTag("player").transform;
         _cave = GameObject.FindWithTag("cave").transform;
+        _spawnPosition = transform.position;
+        _spawnRotation = transform.rotation;
         batFlapController = BabyBat.GetComponent<BatFlapController>();
         _follow = "";
+        babystatusHUD.text = "Baby Status : Not Found";
+
     }
 
 
@@ -30,12 +38,16 @@ public class BabyBatController : MonoBehaviour {
     {
         if (_follow.Equals("bat"))
         {
-            //rotate to look at the player
-            transform.rotation = Quaternion.Slerp(transform.rotation,
-            Quaternion.LookRotation(_target.position - transform.position), rotationSpeed * Time.deltaTime);
+            if(Vector3.Distance(transform.position, _target.transform.position) > 4f)
+            {
+                //rotate to look at the player
+                transform.rotation = Quaternion.Slerp(transform.rotation,
+                Quaternion.LookRotation(_target.position - transform.position), rotationSpeed * Time.deltaTime);
 
-            //move towards the player
-            GetComponent<Rigidbody>().AddForce(transform.forward * moveSpeed * Time.deltaTime);
+                //move towards the player
+                GetComponent<Rigidbody>().AddForce(transform.forward * moveSpeed * Time.deltaTime);
+                babystatusHUD.text = "Baby Status : Found";
+            }
             batFlapController.FlapWings();
         }
         //Only set it the first time
@@ -43,6 +55,7 @@ public class BabyBatController : MonoBehaviour {
         {
             transform.Find("Bat_morph/Bat_Anim0").gameObject.SetActive(false);
             _follow = "bat";
+            babystatusHUD.text = "Baby Status : Not Found";
         }
     }
 
@@ -72,5 +85,11 @@ public class BabyBatController : MonoBehaviour {
         {
             FollowParent();
         }
+    }
+
+    public void Respawn()
+    {
+        transform.position = _spawnPosition;
+        transform.rotation = _spawnRotation;
     }
 }

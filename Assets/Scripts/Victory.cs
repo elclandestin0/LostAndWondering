@@ -21,7 +21,7 @@ public class Victory : MonoBehaviour {
                 SceneManager.LoadScene("NewMain2");
             else if (scene.name == "VictoryLevelTwo")
                 SceneManager.LoadScene("NewMain3");
-            else if (scene.name == "VictoryLevelThree");
+            else if (scene.name == "VictoryLevelThree")
                 SceneManager.LoadScene("Menu");
         }
 	}

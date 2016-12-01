@@ -15,6 +15,7 @@ public class BabyBatController : MonoBehaviour {
     private Vector3 _spawnPosition;
     private Quaternion _spawnRotation;
     public Text babystatusHUD;
+    private AudioSource _suspenceSound; 
 
     void Start()
     {
@@ -24,6 +25,7 @@ public class BabyBatController : MonoBehaviour {
         _spawnRotation = transform.rotation;
         batFlapController = BabyBat.GetComponent<BatFlapController>();
         _follow = "";
+        _suspenceSound = gameObject.GetComponent<AudioSource>();
         babystatusHUD.text = "Baby Status : Lost";
     }
 
@@ -39,19 +41,35 @@ public class BabyBatController : MonoBehaviour {
         {
             if(Vector3.Distance(transform.position, _target.transform.position) > 4f)
             {
+                if (GameObject.Find("Terrain").GetComponents<AudioSource>()[1].isPlaying)
+                {
+                    GameObject.Find("Terrain").GetComponents<AudioSource>()[1].Pause();
+                    _suspenceSound.Play();
+                }
+
                 //rotate to look at the player
                 transform.rotation = Quaternion.Slerp(transform.rotation,
                 Quaternion.LookRotation(_target.position - transform.position), rotationSpeed * Time.deltaTime);
-
+                
                 //move towards the player
                 GetComponent<Rigidbody>().AddForce(transform.forward * moveSpeed * Time.deltaTime);
                 babystatusHUD.text = "Baby Status : Wandering";
             }
+            else
+            {
+                if (_suspenceSound.isPlaying)
+                {
+                    GameObject.Find("Terrain").GetComponents<AudioSource>()[1].Play();
+                    _suspenceSound.Stop();
+                }
+            }
+
             batFlapController.FlapWings();
         }
         //Only set it the first time
         else if (Vector3.Distance(transform.position, _target.position) <= followParentDistance)
         {
+
             transform.Find("Bat_morph/Bat_Anim0").gameObject.SetActive(false);
             _follow = "bat";
             babystatusHUD.text = "Baby Status : Lost";

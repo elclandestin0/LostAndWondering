@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class BabyBatController : MonoBehaviour {
 
@@ -15,7 +16,8 @@ public class BabyBatController : MonoBehaviour {
     private Vector3 _spawnPosition;
     private Quaternion _spawnRotation;
     public Text babystatusHUD;
-    private AudioSource _suspenceSound; 
+    private AudioSource _suspenceSound;
+    private float _winCounter;
 
     void Start()
     {
@@ -26,13 +28,15 @@ public class BabyBatController : MonoBehaviour {
         batFlapController = BabyBat.GetComponent<BatFlapController>();
         _follow = "";
         _suspenceSound = gameObject.GetComponent<AudioSource>();
-        babystatusHUD.text = "Baby Status : Lost";
+        babystatusHUD.text = "Baby Status: Lost";
+        _winCounter = 0.0f;
     }
 
 
     void Update()
     {
         Move();
+        BatHome();
     }
 
     void FollowParent()
@@ -53,7 +57,7 @@ public class BabyBatController : MonoBehaviour {
                 
                 //move towards the player
                 GetComponent<Rigidbody>().AddForce(transform.forward * moveSpeed * Time.deltaTime);
-                babystatusHUD.text = "Baby Status : Wandering";
+                babystatusHUD.text = "Baby Status: Following";
             }
             else
             {
@@ -72,7 +76,7 @@ public class BabyBatController : MonoBehaviour {
 
             transform.Find("Bat_morph/Bat_Anim0").gameObject.SetActive(false);
             _follow = "bat";
-            babystatusHUD.text = "Baby Status : Lost";
+            babystatusHUD.text = "Baby Status: Lost";
         }
     }
 
@@ -87,10 +91,10 @@ public class BabyBatController : MonoBehaviour {
             //move towards the player
             GetComponent<Rigidbody>().AddForce(transform.forward * moveSpeed * Time.deltaTime);
             batFlapController.FlapWings();
-            babystatusHUD.text = "Baby Status : Found"; 
+            babystatusHUD.text = "Baby Status: Cave"; 
         }
         //Only set it the first time
-        else if(Vector3.Distance(transform.position, _cave.position) <= followParentDistance)
+        else if(Vector3.Distance(transform.position, _cave.position) <= followParentDistance && !_follow.Equals("home"))
         {
             _follow = "cave";
         }
@@ -98,16 +102,17 @@ public class BabyBatController : MonoBehaviour {
 
     void OnTriggerEnter(Collider collider)
     {
-        if (collider.gameObject.tag == "batSanctuary")
+        if (collider.gameObject.tag == "cave")
         {
-            babystatusHUD.text = "Baby Status: Arrived home!";
+            babystatusHUD.text = "Baby Status: Home";
+            _follow = "home";
         }
     }
 
     void Move()
     {
         EnterCave();
-        if (!_follow.Equals("cave"))
+        if (!_follow.Equals("cave") && !_follow.Equals("home"))
         {
             FollowParent();
         }
@@ -117,5 +122,17 @@ public class BabyBatController : MonoBehaviour {
     {
         transform.position = _spawnPosition;
         transform.rotation = _spawnRotation;
+    }
+
+    void BatHome()
+    {
+        if (_follow.Equals("home"))
+        {
+            _winCounter += Time.deltaTime;
+            if(_winCounter > 2.0f)
+            {
+                SceneManager.LoadScene("Victory");
+            }
+        }
     }
 }

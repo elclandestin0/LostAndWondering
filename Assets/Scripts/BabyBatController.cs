@@ -3,7 +3,8 @@ using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.SceneManagement;
 
-public class BabyBatController : MonoBehaviour {
+public class BabyBatController : MonoBehaviour
+{
 
     private Transform _target;
     private Transform _cave;
@@ -131,7 +132,13 @@ public class BabyBatController : MonoBehaviour {
             _winCounter += Time.deltaTime;
             if(_winCounter > 2.0f)
             {
-                SceneManager.LoadScene("Victory");
+                Scene scene = SceneManager.GetActiveScene();
+                if (scene.name == "NewMain")
+                    SceneManager.LoadScene("VictoryLevelOne");
+                else if (scene.name == "NewMain2")
+                    SceneManager.LoadScene("VictoryLevelTwo");
+                else if (scene.name == "NewMain3")
+                    SceneManager.LoadScene("VictoryLevelThree");
             }
         }
     }

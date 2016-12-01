@@ -5,6 +5,7 @@ public class BatFlapController : MonoBehaviour {
     private float _batFlapTimer;
     private const float FLAPTIMER = 0.1f;
     private int _flapAnimation;
+
     // Use this for initialization
     void Start () {
         _batFlapTimer = 0.4f;
@@ -23,7 +24,6 @@ public class BatFlapController : MonoBehaviour {
             transform.Find("Bat_Anim" + _flapAnimation).gameObject.SetActive(false);
             _flapAnimation = (_flapAnimation + 1) % 7;
             transform.Find("Bat_Anim" + _flapAnimation).gameObject.SetActive(true);
-
         }
         else
         {

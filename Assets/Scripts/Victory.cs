@@ -16,7 +16,13 @@ public class Victory : MonoBehaviour {
         _sceneCounter += Time.deltaTime;
 	    if (_sceneCounter > 4.0f)
         {
-            SceneManager.LoadScene("Menu");
+            Scene scene = SceneManager.GetActiveScene();
+            if (scene.name == "VictoryLevelOne")
+                SceneManager.LoadScene("NewMain2");
+            else if (scene.name == "VictoryLevelTwo")
+                SceneManager.LoadScene("NewMain3");
+            else if (scene.name == "VictoryLevelThree");
+                SceneManager.LoadScene("Menu");
         }
 	}
 }

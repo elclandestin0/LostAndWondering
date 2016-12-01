@@ -49,7 +49,7 @@ public class HawkController : MonoBehaviour {
 
     void AttackBat()
     {
-        if(Vector3.Distance(transform.position, _target.transform.position) <= 4f)
+        if(Vector3.Distance(transform.position, _target.transform.position) <= 8f)
         {
             _target.transform.parent.GetComponent<BatController>().Respawn();
             if (BabyBatController._follow == "bat")

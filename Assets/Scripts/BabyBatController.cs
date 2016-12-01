@@ -24,8 +24,7 @@ public class BabyBatController : MonoBehaviour {
         _spawnRotation = transform.rotation;
         batFlapController = BabyBat.GetComponent<BatFlapController>();
         _follow = "";
-        babystatusHUD.text = "Baby Status : Not Found";
-
+        babystatusHUD.text = "Baby Status : Lost";
     }
 
 
@@ -46,7 +45,7 @@ public class BabyBatController : MonoBehaviour {
 
                 //move towards the player
                 GetComponent<Rigidbody>().AddForce(transform.forward * moveSpeed * Time.deltaTime);
-                babystatusHUD.text = "Baby Status : Found";
+                babystatusHUD.text = "Baby Status : Wandering";
             }
             batFlapController.FlapWings();
         }
@@ -55,7 +54,7 @@ public class BabyBatController : MonoBehaviour {
         {
             transform.Find("Bat_morph/Bat_Anim0").gameObject.SetActive(false);
             _follow = "bat";
-            babystatusHUD.text = "Baby Status : Not Found";
+            babystatusHUD.text = "Baby Status : Lost";
         }
     }
 
@@ -70,11 +69,20 @@ public class BabyBatController : MonoBehaviour {
             //move towards the player
             GetComponent<Rigidbody>().AddForce(transform.forward * moveSpeed * Time.deltaTime);
             batFlapController.FlapWings();
+            babystatusHUD.text = "Baby Status : Found"; 
         }
         //Only set it the first time
         else if(Vector3.Distance(transform.position, _cave.position) <= followParentDistance)
         {
             _follow = "cave";
+        }
+    }
+
+    void OnTriggerEnter(Collider collider)
+    {
+        if (collider.gameObject.tag == "batSanctuary")
+        {
+            babystatusHUD.text = "Baby Status: Arrived home!";
         }
     }
 

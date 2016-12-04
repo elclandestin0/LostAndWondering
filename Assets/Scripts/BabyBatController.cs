@@ -139,6 +139,8 @@ public class BabyBatController : MonoBehaviour
                     SceneManager.LoadScene("VictoryLevelTwo");
                 else if (scene.name == "NewMain3")
                     SceneManager.LoadScene("VictoryLevelThree");
+                else
+                    SceneManager.LoadScene("Victory");
             }
         }
     }
